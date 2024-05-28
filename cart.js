@@ -19,7 +19,7 @@ window.onload = function() {
             var productCard = button.parentElement;
             var productImage = productCard.querySelector('img').src;
             var productName = productCard.querySelector('h3').textContent;
-            var productPrice = parseFloat(productCard.querySelector('p').textContent.replace('$', ''));
+            var productPrice = parseFloat(productCard.querySelector('p').textContent.replace('Q', ''));
             addToCart({ index, productImage, productName, productPrice });
         });
     });
