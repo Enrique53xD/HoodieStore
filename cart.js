@@ -20,7 +20,11 @@ window.onload = function() {
             var productImage = productCard.querySelector('img').src;
             var productName = productCard.querySelector('h3').textContent;
             var productPrice = parseFloat(productCard.querySelector('p').textContent.replace('Q', ''));
-            addToCart({ index, productImage, productName, productPrice });
+            if (!isNaN(productPrice)) {
+                addToCart({ index, productImage, productName, productPrice });
+            } else {
+                console.error('Product price is not a number:', productCard.querySelector('p').textContent);
+            }
         });
     });
 
