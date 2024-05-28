@@ -39,14 +39,14 @@
 
     <script src="cart.js"></script>
     <script>
-        window.onload = function() {
+        window.onload = function () {
             var cart = JSON.parse(localStorage.getItem('cart')) || [];
             var cartContentElement = document.querySelector('.cart-content');
-        
+
             var total = 0;
-            cart.forEach(function(product, index) {
-    var productElement = document.createElement('div');
-    productElement.innerHTML = `
+            cart.forEach(function (product, index) {
+                var productElement = document.createElement('div');
+                productElement.innerHTML = `
         <img src="${product.productImage}" alt="${product.productName}">
         <h3>${product.productName}</h3>
         <div class="product-footer">
@@ -54,7 +54,7 @@
             <p>Q${product.productPrice || 0} </p>
         </div>
     `;
-                productElement.querySelector('.delete-button').addEventListener('click', function() {
+                productElement.querySelector('.delete-button').addEventListener('click', function () {
                     cart.splice(index, 1);
                     localStorage.setItem('cart', JSON.stringify(cart));
                     location.reload();
@@ -62,23 +62,23 @@
                 cartContentElement.appendChild(productElement);
                 total += product.productPrice;
             });
-        
+
             var totalElement = document.createElement('p');
             totalElement.textContent = 'Total: Q' + total.toFixed(2);
             cartContentElement.appendChild(totalElement);
-        
+
             var proceedButton = document.createElement('button');
             proceedButton.textContent = 'Comprar';
-            proceedButton.addEventListener('click', function() {
+            proceedButton.addEventListener('click', function () {
                 localStorage.removeItem('cart');
                 alert('Compra exitosa');
                 location.reload();
             });
             cartContentElement.appendChild(proceedButton);
-        
+
             updateCartCount();
         };
-        </script>
+    </script>
 </body>
 
 </html>
