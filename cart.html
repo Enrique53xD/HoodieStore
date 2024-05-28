@@ -45,15 +45,15 @@
         
             var total = 0;
             cart.forEach(function(product, index) {
-                var productElement = document.createElement('div');
-                productElement.innerHTML = `
-                    <img src="${product.productImage}" alt="${product.productName}">
-                    <h3>${product.productName}</h3>
-                    <div class="product-footer">
-                        <button class="delete-button">Eliminar</button>
-                        <p>Q${product.productPrice} </p>
-                    </div>
-                `;
+    var productElement = document.createElement('div');
+    productElement.innerHTML = `
+        <img src="${product.productImage}" alt="${product.productName}">
+        <h3>${product.productName}</h3>
+        <div class="product-footer">
+            <button class="delete-button">Eliminar</button>
+            <p>Q${product.productPrice || 0} </p>
+        </div>
+    `;
                 productElement.querySelector('.delete-button').addEventListener('click', function() {
                     cart.splice(index, 1);
                     localStorage.setItem('cart', JSON.stringify(cart));
